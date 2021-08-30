@@ -9,7 +9,7 @@ A webpage that generates a random password with different characters chosen by t
 * JS
 
 ## Website
-https://maxwillner.github.io/maxwillner.portfolio/
+https://maxwillner.github.io/password-generator/
 
 ## Contribution
 Made by Max Willner
