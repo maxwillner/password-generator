@@ -7,6 +7,7 @@ var numericValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var availableCharacters = [];
 var password = [];
 
+
 var passwordInput;
 var createPassword;
 var index;
@@ -48,6 +49,7 @@ function passwordInput() {
   var uppercaseConfirm = confirm("Do you want to include uppercase letters in your password?");
   if (uppercaseConfirm) {
     availableCharacters.push(...uppercaseLetters);
+    alert("You have chosen to include uppercase letters in your password.");
   }
   else {
     alert("You have chosen to exclude uppercase letters in your password!");
@@ -57,6 +59,7 @@ function passwordInput() {
   var lowercaseConfirm = confirm("Do you want to include lowercase letters in your password?");
   if (lowercaseConfirm) {
     availableCharacters.push(...lowercaseLetters);
+    alert("You have chosen to include lowercase letters in your password.");
   } else {
     alert("You have chosen to exclude lowercase letters in your password!");
   }
@@ -65,6 +68,7 @@ function passwordInput() {
   var specialCharacterConfirm = confirm("Do you want to include special characters in your password?")
   if (specialCharacterConfirm) {
     availableCharacters.push(...specialCharacters);
+    alert("You have chosen to include special characters in your password.");
   } else {
     alert("You have chosen to exclude special characters in your password!")
   }
@@ -73,9 +77,15 @@ function passwordInput() {
   var numericConfirm =  confirm("Do you want to include numeric values in your password?")
   if (numericConfirm) {
     availableCharacters.push(...numericValues);
+    alert("You have chosen to include numbers in your password.");
   } else {
     alert("You have chosen to exclude special characters in your password!")
   }; 
+
+  if (uppercaseConfirm === false && lowercaseConfirm === false && specialCharacterConfirm === false && numericConfirm === false) {
+    alert("Error! You must choose at least one set of characters for your password!")
+    passwordInput();
+  }
 
   // now have mixture of uppercase, lowercase, specialcharacters, and numericvalues within 'availablecharacters' variable -- 10 - 72 characters
   // console.log(availableCharacters);
@@ -84,15 +94,13 @@ function passwordInput() {
 // create password values by looping over 'availablecharacter' array for the 'numberOfCharacters' chosen
 function createPasswordValues() {
   for (var i = 0; i < numberOfCharacters; i++) {
-    var index = availableCharacters[Math.floor(Math.random() * availableCharacters.length)];
+    var randomCharacter = availableCharacters[Math.floor(Math.random() * availableCharacters.length)];
     
-    // stuck again -- trying to display all password values at once
-    var completePassword = []
-    completePassword.push(...index);
+    password.push(randomCharacter);
   };
-};
 
-// stuckness ends
+  alert("Your new password is " + password.join(""));
+};
 
 function generatePassword() {  
   getUserInputs();
@@ -100,17 +108,4 @@ function generatePassword() {
   createPasswordValues();
 };
 
-
-// show final product
-// ensure all characters 
-
-
-// Write password to the #password input
-// function passwordInput() {}
-//   var password = passwordInput();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
 
